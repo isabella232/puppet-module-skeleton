@@ -45,3 +45,12 @@ task :test => [
   :spec,
   :metadata,
 ]
+
+namespace :test do
+  desc "Run syntax, lint, and spec_standalone tests."
+  task :standalone => [
+    :syntax,
+    :lint,
+    :spec_standalone,
+  ]
+end
