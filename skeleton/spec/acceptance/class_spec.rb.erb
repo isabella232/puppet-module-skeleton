@@ -2,16 +2,17 @@ require 'spec_helper_acceptance'
 
 describe '<%= metadata.name %> class' do
 
-  context 'default parameters' do
-    # Using puppet_apply as a helper
-    it 'should work idempotently with no errors' do
-      pp = <<-EOS
+  context 'with default parameters' do
+    let(:pp) {"
       class { '<%= metadata.name %>': }
-      EOS
+    "}
 
-      # Run it twice and test for idempotency
+    it 'applies with no errors' do
       apply_manifest(pp, :catch_failures => true)
-      apply_manifest(pp, :catch_changes  => true)
+    end
+
+    it 'is idempotent' do
+      apply_manifest(pp, :catch_changes => true)
     end
 
     describe package('<%= metadata.name %>') do
