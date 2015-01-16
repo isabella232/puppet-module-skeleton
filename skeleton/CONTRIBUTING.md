@@ -1,14 +1,9 @@
-This module has grown over time based on a range of contributions from
-people using it. If you follow these contributing guidelines your patch
-will likely make it into a release a little quicker.
-
-
 ## Contributing
 
 1. Fork the repo.
 
 2. Run the tests. We only take pull requests with passing tests, and
-   it's great to know that you have a clean slate
+   it's great to know that you have a clean slate.
 
 3. Add a test for your change. Only refactoring and documentation
    changes require no new tests. If you are adding functionality
@@ -17,7 +12,6 @@ will likely make it into a release a little quicker.
 4. Make the test pass.
 
 5. Push to your fork and submit a pull request.
-
 
 ## Dependencies
 
@@ -30,11 +24,11 @@ By default the tests use a baseline version of Puppet.
 If you have Ruby 2.x or want a specific version of Puppet,
 you must set an environment variable such as:
 
-    export PUPPET_VERSION="~> 3.2.0"
+    export PUPPET_VERSION="~> 3.3.0"
 
 Install the dependencies like so...
 
-    bundle install
+    bundle install --path vendor/bundle
 
 ## Syntax and style
 
@@ -80,12 +74,11 @@ with:
     bundle exec rake acceptance
 
 This will run the tests on an Ubuntu 12.04 virtual machine. You can also
-run the integration tests against Centos 6.5 with.
+run the integration tests against Ubuntu 14.04 with.
 
-    RS_SET=centos-64-x64 bundle exec rake acceptance
+    BEAKER_SET=ubuntu-server-1404-x64 bundle exec rake acceptance
 
 If you don't want to have to recreate the virtual machine every time you
 can use `BEAKER_DESTROY=no` and `BEAKER_PROVISION=no`. On the first run you will
 at least need `BEAKER_PROVISION` set to yes (the default). The Vagrantfile
 for the created virtual machines will be in `.vagrant/beaker_vagrant_files`.
-
